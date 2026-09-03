@@ -42,11 +42,13 @@ The system analyses their colour, pattern, and texture, calculates a compatibili
 
 ### Installation
 No installation needed — it's a static single-file HTML app, and you can try it live right now without cloning anything:
-
+```text
 🔗 **Live Site:** https://mirzalfathimaajeeb.github.io/Porutham_Undo/
-
-If you'd rather run it locally, clone it instead:git clone https://github.com/mirzalfathimaajeeb/Porutham_Undo.git
-
+```
+If you'd rather run it locally, clone it instead:
+```text
+git clone https://github.com/mirzalfathimaajeeb/Porutham_Undo.git
+```
 ## Project Documentation
 
 ### For Software:
@@ -86,6 +88,7 @@ The application is designed to make the entire experience playful and interactiv
 
 ### How It Works
 
+```text
 Two Sock Images
        ↓
 Camera / Gallery Input
@@ -103,6 +106,8 @@ On-Device AI Interpretation
 AI Sock Verdict
        ↓
 "PORUTHAM UNDO?" 🧦❤️
+```
+
 
 ## Project Demo
 
