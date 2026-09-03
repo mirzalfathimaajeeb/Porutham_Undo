@@ -105,33 +105,6 @@ AI Sock Verdict
        ↓
 "PORUTHAM UNDO?" 🧦❤️
 
-#### Screenshots (Add at least 3)
-![Screenshot1](screenshot1.png)
-*Homepage — drop in two sock photos to begin the interrogation*
-
-![Screenshot2](screenshot2.png)
-*Homepage — drop in two sock photos to begin the interrogation*
-
-![Screenshot3](screenshot3.png)
-*The scanning sequence — colour, pattern and texture checks running live*
-
-![Screenshot4](screenshot4.png)
-*The verdict card — score, roast, and cinema-style sticker reveal*
-
-#### Diagrams
-![Workflow](workflow.png)
-*User uploads two sock photos → canvas-based background removal isolates each sock → colour histogram + pattern intersection comparison → weighted compatibility score calculated → Manglish verdict engine picks a matching roast/praise line → optional on-device AI (Gemini Nano) generates an extra one-line commentary → result displayed with score, verdict, sticker and confetti (if applicable)*
-
-### For Hardware:
-
-#### Schematic & Circuit
-- N/A — no circuit or schematic, this project has no hardware component.
-
-#### Build Photos
-- N/A — no physical components, build process, or hardware build for this project.
-
----
-
 ## Project Demo
 
 ### Video
