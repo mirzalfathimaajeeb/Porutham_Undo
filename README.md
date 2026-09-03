@@ -42,8 +42,9 @@ The system analyses their colour, pattern, and texture, calculates a compatibili
 
 ### Installation
 No installation needed — it's a static single-file HTML app, and you can try it live right now without cloning anything:
+**Live Site:** 
 ```text
-🔗 **Live Site:** https://mirzalfathimaajeeb.github.io/Porutham_Undo/
+🔗 https://mirzalfathimaajeeb.github.io/Porutham_Undo/
 ```
 If you'd rather run it locally, clone it instead:
 ```text
