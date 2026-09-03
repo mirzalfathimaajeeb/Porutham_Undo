@@ -114,10 +114,8 @@ https://drive.google.com/drive/folders/13oPpPBN66rPeqB699mEVxEhDyILwfafS?usp=sha
 
 
 ## Team Contributions
-- Mirsal Fathima Ajeeb: Full frontend build, image analysis algorithm, Manglish dialogue writing, GitHub setup and deployment
-- Renjana S P: [Fill in her specific contributions]
 
----
+- **Mirsal Fathima Ajeeb:** Project ideation, UI/UX design, front-end interface development, visual design, AI/LLM integration, user interaction flow, and project presentation.
 
-*Made with 🧦 · No socks were separated in the making of this*
+- **Renjana S P:** Image processing and sock feature analysis, compatibility calculation, animations and sound effects, testing and debugging, project documentation, and deployment.
 
