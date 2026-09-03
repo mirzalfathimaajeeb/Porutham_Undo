@@ -106,7 +106,7 @@ AI Sock Verdict
 "PORUTHAM UNDO?" 🧦❤️
 
 #### Screenshots (Add at least 3)
-![Screenshot1](screenshot1.png)
+![Screenshot1](screenshot1.png.png)
 *Homepage — drop in two sock photos to begin the interrogation*
 
 ![Screenshot2](screenshot2.png)
