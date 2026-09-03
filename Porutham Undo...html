@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porutham Undo? · Sock compatibility verification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600..900,0..100,0..1;1,9..144,600..900,0..100,0..1&family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   PORUTHAM UNDO? — kasavu theme
+   White paper, maroon ink, gold thread. Everything comes from these.
+   ========================================================================== */
+:root{
+  --paper:#FFFBF2;
+  --cream:#F8EFDC;
+  --card:#FFFFFF;
+  --maroon:#7C1E30;
+  --maroon-deep:#5A1122;
+  --maroon-soft:#A94A5C;
+  --gold:#C9992B;
+  --gold-soft:#F0CE6A;
+  --gold-pale:#FBEFC9;
+  --ink:#3A2027;
+  --dim:#8E7078;
+  --line:#3A2027;
+  --rule:rgba(58,32,39,.16);
+  --bd:2.5px solid var(--line);
+  --pop:4px 4px 0 var(--line);
+  --pop-lg:6px 6px 0 var(--line);
+  --r-sm:12px; --r-md:18px; --r-lg:26px; --r-pill:999px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg opacity='.34' stroke='%23C9992B' stroke-width='1.6' stroke-linejoin='round'%3E%3Cg transform='translate(14 12) rotate(-15)'%3E%3Cpath d='M6 2 L24 2 L24 26 Q24 29 27 30 L36 34 Q42 37 42 43 Q42 50 35 50 L20 50 Q6 50 6 38 Z' fill='%23FBEFC9'/%3E%3Cpath d='M6 2 L24 2 L24 9 L6 9 Z' fill='%23F0CE6A'/%3E%3C/g%3E%3Cg transform='translate(146 34) rotate(21)'%3E%3Cpath d='M6 2 L24 2 L24 26 Q24 29 27 30 L36 34 Q42 37 42 43 Q42 50 35 50 L20 50 Q6 50 6 38 Z' fill='%23F0CE6A'/%3E%3Cpath d='M6 2 L24 2 L24 9 L6 9 Z' fill='%23FBEFC9'/%3E%3C/g%3E%3Cg transform='translate(68 110) rotate(-5)'%3E%3Cpath d='M6 2 L24 2 L24 26 Q24 29 27 30 L36 34 Q42 37 42 43 Q42 50 35 50 L20 50 Q6 50 6 38 Z' fill='%23FBEFC9'/%3E%3Cpath d='M6 2 L24 2 L24 9 L6 9 Z' fill='%23F0CE6A'/%3E%3C/g%3E%3Cg transform='translate(186 146) rotate(-27)'%3E%3Cpath d='M6 2 L24 2 L24 26 Q24 29 27 30 L36 34 Q42 37 42 43 Q42 50 35 50 L20 50 Q6 50 6 38 Z' fill='%23F0CE6A'/%3E%3Cpath d='M6 2 L24 2 L24 9 L6 9 Z' fill='%23FBEFC9'/%3E%3C/g%3E%3Cg transform='translate(18 180) rotate(29)'%3E%3Cpath d='M6 2 L24 2 L24 26 Q24 29 27 30 L36 34 Q42 37 42 43 Q42 50 35 50 L20 50 Q6 50 6 38 Z' fill='%23FBEFC9'/%3E%3Cpath d='M6 2 L24 2 L24 9 L6 9 Z' fill='%23F0CE6A'/%3E%3C/g%3E%3Cg transform='translate(118 200) rotate(12)'%3E%3Cpath d='M6 2 L24 2 L24 26 Q24 29 27 30 L36 34 Q42 37 42 43 Q42 50 35 50 L20 50 Q6 50 6 38 Z' fill='%23F0CE6A'/%3E%3Cpath d='M6 2 L24 2 L24 9 L6 9 Z' fill='%23FBEFC9'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(circle at 14% 6%, rgba(201,153,43,.16), transparent 44%),
+    radial-gradient(circle at 86% 90%, rgba(124,30,48,.10), transparent 42%);
+  background-attachment:fixed,scroll,scroll;
+  color:var(--ink);
+  font-family:'Nunito',system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  padding:0 18px 70px;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* gold kasavu band */
+.wrap::before,.wrap::after{
+  content:'';display:block;height:10px;margin:0 -18px;
+  background:
+    linear-gradient(var(--maroon),var(--maroon)) 0 0/100% 2px no-repeat,
+    linear-gradient(var(--maroon),var(--maroon)) 0 100%/100% 2px no-repeat,
+    repeating-linear-gradient(90deg,var(--gold) 0 3px,transparent 3px 10px) center/100% 4px no-repeat,
+    var(--gold-pale);
+}
+.wrap::after{margin-top:44px}
+
+/* ---------- header ---------- */
+header{text-align:center;padding:40px 0 6px}
+.pill{
+  display:inline-block;background:var(--gold-soft);border:var(--bd);
+  border-radius:var(--r-pill);padding:5px 20px;box-shadow:3px 3px 0 var(--line);
+  font-weight:800;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:22px;color:var(--maroon-deep);
+}
+h1{
+  font-family:'Fraunces',Georgia,serif;font-weight:800;
+  font-variation-settings:'SOFT' 70,'WONK' 1,'opsz' 120;
+  font-size:clamp(2.9rem,11.5vw,5.4rem);line-height:.94;
+  margin:0 0 16px;letter-spacing:-.028em;color:var(--maroon);
+}
+h1 span{
+  color:var(--gold);font-style:italic;
+  font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;
+}
+.strap{
+  font-weight:800;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 18px;
+}
+.strap::before,.strap::after{
+  content:'';display:inline-block;width:22px;height:2.5px;border-radius:2px;
+  background:var(--gold);vertical-align:middle;margin:0 12px;
+}
+.sub{max-width:430px;margin:0 auto;color:var(--dim);font-size:15px}
+
+/* ---------- mascots ---------- */
+.stage{
+  position:relative;display:flex;justify-content:center;align-items:flex-start;gap:26px;
+  margin:34px 0 10px;padding-top:26px;min-height:154px;
+}
+.washline{position:absolute;top:0;left:-14px;right:-14px;height:26px;width:calc(100% + 28px);pointer-events:none}
+.hanger{position:relative}
+.peg{
+  position:absolute;top:-13px;left:50%;margin-left:-6px;z-index:3;
+  width:12px;height:24px;background:var(--gold-soft);border:var(--bd);border-radius:4px;
+}
+.mascot{width:100px;display:block;transform-origin:top center;
+  transition:transform .7s cubic-bezier(.34,1.4,.5,1)}
+.stage.happy .left  .mascot{transform:rotate(13deg)}
+.stage.happy .right .mascot{transform:rotate(-13deg)}
+.stage.sad   .left  .mascot{transform:rotate(-11deg)}
+.stage.sad   .right .mascot{transform:rotate(11deg)}
+.hearts{display:flex;gap:5px;align-items:flex-end;padding-top:48px;opacity:0;transition:opacity .4s .3s}
+.stage.happy .hearts{opacity:1}
+.hearts i{
+  width:15px;height:15px;background:var(--maroon);display:block;
+  clip-path:path('M7.5 14 C 2 9.5 0 7 0 4.6 C 0 2 2 0 4.3 0 C 5.7 0 6.9 .7 7.5 1.7 C 8.1 .7 9.3 0 10.7 0 C 13 0 15 2 15 4.6 C 15 7 13 9.5 7.5 14 Z');
+  animation:bob 1.5s ease-in-out infinite;
+}
+.hearts i:nth-child(2){animation-delay:.22s;width:11px;height:11px}
+.hearts i:nth-child(3){animation-delay:.44s;width:8px;height:8px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.blink{animation:blink 4.4s infinite;transform-origin:center}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+
+/* ---------- intake ---------- */
+.intake{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0 0}
+@media(max-width:600px){.intake{grid-template-columns:1fr}}
+.slot{background:var(--card);border:var(--bd);border-radius:var(--r-lg);padding:14px;box-shadow:var(--pop-lg)}
+.slot h3{
+  font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;color:var(--maroon-deep);
+  margin:2px 0 12px;display:flex;justify-content:space-between;align-items:center;
+}
+.tag{
+  font-size:11px;font-weight:800;background:var(--gold-soft);border:2px solid var(--line);
+  border-radius:var(--r-pill);padding:1px 11px;color:var(--maroon-deep);
+}
+.tag.waiting{background:var(--cream);color:var(--dim)}
+.drop{
+  aspect-ratio:1;width:100%;border:3px dashed var(--rule);border-radius:var(--r-md);
+  display:grid;place-items:center;cursor:pointer;overflow:hidden;
+  background:var(--paper);transition:border-color .2s,background .2s,transform .2s;
+}
+.drop:hover,.drop:focus-visible{border-color:var(--maroon);background:var(--card);transform:scale(1.015);outline:none}
+.drop img{width:100%;height:100%;object-fit:cover;display:block}
+.drop span{font-size:14px;color:var(--dim);text-align:center;padding:0 20px;font-weight:700}
+.drop span b{display:block;font-size:28px;margin-bottom:6px}
+input[type=file]{display:none}
+
+.acts{display:flex;gap:8px;margin-top:12px}
+.mini{
+  flex:1;font-family:'Fredoka',sans-serif;font-weight:500;font-size:13.5px;
+  padding:9px 6px;border:var(--bd);border-radius:var(--r-pill);cursor:pointer;
+  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--line);
+}
+.mini.cam{background:var(--gold-soft)}
+.mini:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--line)}
+#camA,#camB{display:none}
+body.no-camera .mini.cam{display:none}
+
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:28px 0 0;justify-content:center}
+button{
+  font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;
+  padding:13px 34px;border:var(--bd);border-radius:var(--r-pill);cursor:pointer;
+  background:var(--maroon);color:var(--gold-pale);box-shadow:var(--pop);
+  transition:transform .12s,box-shadow .12s,opacity .2s,background .18s;
+}
+button:hover:not(:disabled){background:var(--maroon-deep);transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--line)}
+button:active:not(:disabled){transform:translate(4px,4px);box-shadow:0 0 0 var(--line)}
+button:disabled{opacity:.4;cursor:not-allowed;box-shadow:var(--pop)}
+button.ghost{background:var(--card);color:var(--ink)}
+button.ghost:hover{background:var(--cream)}
+.hint{font-size:13.5px;color:var(--dim);text-align:center;width:100%;margin-top:2px}
+
+/* ---------- scanning ---------- */
+.scan{position:fixed;inset:0;z-index:70;background:rgba(58,32,39,.76);display:grid;place-items:center;padding:20px}
+.scan[hidden]{display:none}
+.scanbox{
+  background:var(--paper);border:var(--bd);border-radius:var(--r-lg);
+  padding:30px 26px 24px;box-shadow:var(--pop-lg);text-align:center;width:100%;max-width:350px;
+}
+.radar{
+  width:126px;height:126px;margin:0 auto 20px;border-radius:50%;
+  border:3px solid var(--line);position:relative;overflow:hidden;
+  background:radial-gradient(circle,var(--gold-pale) 0%,var(--gold-soft) 100%);
+  display:grid;place-items:center;
+}
+.radar span{font-size:44px;animation:wob 1.1s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(11deg)}}
+.radar::after{
+  content:'';position:absolute;inset:0;
+  background:conic-gradient(from 0deg, rgba(255,255,255,.85) 0deg, transparent 60deg);
+  animation:sweep 1.2s linear infinite;
+}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.scanmsg{font-family:'Fredoka',sans-serif;font-weight:500;font-size:17px;margin:0 0 14px;min-height:26px;color:var(--maroon-deep)}
+.dots{display:flex;gap:7px;justify-content:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--maroon);border:2px solid var(--line);animation:bounce .9s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}
+.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.scansteps{
+  margin-top:18px;text-align:left;font-size:12.5px;color:var(--dim);
+  border-top:2px dashed var(--rule);padding-top:12px;
+}
+.scansteps div{padding:3px 0;opacity:.5}
+.scansteps div.on{opacity:1;color:var(--maroon);font-weight:700}
+.machine-reaction{
+  margin-top:14px;border-top:2px dashed var(--rule);padding-top:12px;font-size:12.5px;color:var(--dim);
+}
+.machine-reaction b{color:var(--gold);letter-spacing:.16em;font-size:10px}
+#machineline{color:var(--ink);font-style:italic}
+
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:65;overflow:hidden}
+.confetti b{position:absolute;font-size:22px;animation:fall linear forwards}
+@keyframes fall{from{transform:translateY(-8vh) rotate(0);opacity:1}to{transform:translateY(108vh) rotate(540deg);opacity:0}}
+
+/* ---------- result card ---------- */
+.card{
+  margin:36px 0 0;background:var(--card);border:var(--bd);border-radius:var(--r-lg);
+  box-shadow:var(--pop-lg);padding:0;display:none;overflow:hidden;text-align:center;
+  position:relative;
+}
+.card.on{display:block;animation:pop .45s cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{from{opacity:0;transform:scale(.95) translateY(14px)}to{opacity:1;transform:none}}
+.card::before{
+  content:'';display:block;height:9px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 4px,var(--gold-pale) 4px 12px);
+  border-bottom:var(--bd);
+}
+.score{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 144;
+  font-size:clamp(4.2rem,16vw,7rem);line-height:.88;color:var(--maroon);
+  letter-spacing:-.04em;padding-top:30px;
+}
+.score sup{font-size:.32em;vertical-align:super;opacity:.55;font-weight:700;color:var(--gold)}
+.meter{
+  height:16px;background:var(--cream);border:var(--bd);border-radius:var(--r-pill);
+  max-width:320px;margin:16px auto 22px;overflow:hidden;
+}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-soft),var(--maroon));width:0;transition:width 1s cubic-bezier(.3,1,.4,1)}
+.verdict{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;
+  font-variation-settings:'SOFT' 80,'WONK' 1;
+  font-size:clamp(1.2rem,4vw,1.6rem);line-height:1.34;
+  max-width:520px;margin:0 auto 10px;padding:0 20px;color:var(--maroon-deep);
+}
+.objection{font-size:14.5px;color:var(--dim);max-width:430px;margin:0 auto 26px;padding:0 20px}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 20px}
+.stat{
+  background:var(--gold-pale);border:var(--bd);border-radius:var(--r-md);
+  padding:11px 18px;min-width:100px;
+}
+.stat b{display:block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.4rem;line-height:1.1;color:var(--maroon)}
+.stat small{font-size:10.5px;font-weight:800;color:var(--dim);letter-spacing:.16em;text-transform:uppercase}
+
+/* ---------- cutouts ---------- */
+.peek{margin:26px 20px 26px;padding-top:20px;border-top:2.5px dashed var(--rule)}
+.peek .cap{font-family:'Fredoka',sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 12px}
+.peek .pair{display:flex;gap:12px;justify-content:center}
+.peek img{width:78px;height:78px;object-fit:cover;border:var(--bd);border-radius:var(--r-sm);background:var(--paper)}
+.peek .warn{font-size:13px;color:var(--maroon);margin:14px 0 0;font-style:italic}
+
+/* ---------- register ---------- */
+.register{margin-top:50px}
+.register h2{
+  font-family:'Fraunces',serif;font-weight:700;font-variation-settings:'SOFT' 70,'WONK' 1;
+  font-size:1.6rem;margin:0 0 3px;color:var(--maroon);
+}
+.register .hint{text-align:left;margin:0 0 16px}
+.row{
+  display:flex;align-items:center;gap:12px;background:var(--card);
+  border:var(--bd);border-radius:var(--r-md);padding:9px 14px;margin-bottom:10px;
+  box-shadow:3px 3px 0 var(--line);
+}
+.rank{font-family:'Fredoka',sans-serif;font-weight:600;color:var(--gold);width:24px;flex:none}
+.thumbs{display:flex;gap:4px;flex:none}
+.thumbs img{width:36px;height:36px;object-fit:cover;border:2px solid var(--line);border-radius:10px}
+.rscore{font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;color:var(--maroon);width:70px;flex:none;text-align:right}
+.rverdict{font-size:13.5px;color:var(--dim);flex:1;min-width:0;text-align:left}
+.empty{
+  background:var(--card);border:2.5px dashed var(--rule);border-radius:var(--r-md);
+  padding:22px;text-align:center;color:var(--dim);font-size:14.5px;
+}
+footer{margin-top:20px;text-align:center;font-size:13px;color:var(--dim)}
+
+@media(max-width:600px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 4px}
+  .mascot{width:82px}
+  .stat{min-width:0;flex:1;padding:9px 8px}
+  .rverdict{display:none}
+  .rscore{width:auto;flex:1}
+  .peek img{width:64px;height:64px}
+}
+
+
+/* ---------- the on-device AI line ---------- */
+.ai-line{
+  font-size:14px;color:var(--maroon-deep);max-width:430px;margin:-14px auto 24px;
+  padding:9px 16px 9px 14px;background:var(--gold-pale);
+  border:2px solid var(--line);border-radius:var(--r-pill);
+  display:inline-flex;align-items:center;gap:9px;font-weight:700;
+  animation:aiIn .45s cubic-bezier(.3,1.4,.5,1);
+}
+.ai-line[hidden]{display:none}
+.ai-line::before{
+  content:'AI';font-size:9px;letter-spacing:.14em;font-weight:800;
+  background:var(--maroon);color:var(--gold-pale);padding:3px 7px;border-radius:var(--r-pill);
+  flex:none;
+}
+@keyframes aiIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- cinema-style sticker (original art, no real posters/quotes) ---------- */
+.sticker{
+  position:absolute;top:16px;right:16px;z-index:6;
+  transform:rotate(-9deg) scale(0);transform-origin:center;
+  background:var(--gold-soft);border:3px solid var(--line);border-radius:12px;
+  padding:9px 14px;box-shadow:4px 4px 0 var(--line);
+  font-family:'Fredoka',sans-serif;text-align:center;max-width:128px;
+  transition:transform .55s cubic-bezier(.3,1.8,.4,1);
+}
+.sticker.show{transform:rotate(-9deg) scale(1)}
+.sticker .stamp-emoji{font-size:24px;display:block;line-height:1}
+.sticker .stamp-text{
+  display:block;font-size:11px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--maroon-deep);margin-top:3px;
+}
+.sticker .stamp-caption{
+  display:block;font-size:10px;font-weight:500;font-style:italic;
+  color:var(--maroon);margin-top:3px;line-height:1.25;
+}
+@media(max-width:600px){
+  .sticker{top:10px;right:10px;padding:7px 11px;max-width:104px}
+  .sticker .stamp-emoji{font-size:19px}
+  .sticker .stamp-text{font-size:9.5px}
+  .sticker .stamp-caption{font-size:9px}
+}
+
+/* ---------- intro splash ---------- */
+.intro{
+  position:fixed;inset:0;z-index:200;background:var(--paper);
+  background-image:
+    radial-gradient(circle at 50% 30%, rgba(201,153,43,.18), transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(124,30,48,.12), transparent 55%);
+  display:grid;place-items:center;cursor:pointer;
+  transition:opacity .55s ease, visibility .55s;
+}
+.intro.gone{opacity:0;visibility:hidden}
+.intro-in{position:relative;text-align:center;padding:0 20px;width:100%;max-width:420px}
+.intro-rope{position:absolute;top:0;left:-6%;width:112%;height:20px}
+.intro-socks{
+  display:flex;justify-content:center;align-items:flex-start;gap:26px;
+  padding-top:6px;min-height:130px;
+}
+.idrop{position:relative;transform-origin:top center;opacity:0}
+.idrop .mascot{width:88px}
+.ipeg{
+  position:absolute;top:-11px;left:50%;margin-left:-5px;z-index:3;
+  width:11px;height:22px;background:var(--gold-soft);border:var(--bd);border-radius:4px;
+}
+.d1{animation:dropIn .95s cubic-bezier(.28,1.5,.5,1) .15s forwards, swingA 2.4s ease-in-out 1.1s}
+.d2{animation:dropIn .95s cubic-bezier(.28,1.5,.5,1) .38s forwards, swingB 2.4s ease-in-out 1.3s}
+@keyframes dropIn{
+  0%{opacity:0;transform:translateY(-70vh) rotate(-14deg)}
+  60%{opacity:1}
+  100%{opacity:1;transform:translateY(0) rotate(0)}
+}
+@keyframes swingA{0%,100%{transform:rotate(0)}30%{transform:rotate(9deg)}65%{transform:rotate(-4deg)}}
+@keyframes swingB{0%,100%{transform:rotate(0)}30%{transform:rotate(-9deg)}65%{transform:rotate(4deg)}}
+.iheart{
+  align-self:center;color:var(--maroon);font-size:26px;padding-top:44px;
+  transform:scale(0);animation:heartPop .6s cubic-bezier(.3,1.8,.5,1) 1.5s forwards;
+}
+@keyframes heartPop{0%{transform:scale(0)}60%{transform:scale(1.35)}100%{transform:scale(1)}}
+.intro-title{
+  font-family:'Fraunces',Georgia,serif;font-weight:800;
+  font-variation-settings:'SOFT' 70,'WONK' 1,'opsz' 120;
+  font-size:clamp(2.1rem,9vw,3.2rem);line-height:1;margin:22px 0 10px;
+  color:var(--maroon);letter-spacing:-.03em;
+  opacity:0;animation:riseIn .7s ease 1.35s forwards;
+}
+.intro-title em{color:var(--gold);font-style:italic}
+.intro-strap{
+  font-weight:800;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--dim);margin:0;opacity:0;animation:riseIn .7s ease 1.6s forwards;
+}
+.intro-skip{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+  margin:26px 0 0;opacity:0;animation:riseIn .7s ease 2.1s forwards;
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- eyes ---------- */
+.eye{transform-origin:center;transition:transform .12s}
+.mascot.blinking .eye{transform:scaleY(.08)}
+.pupil{transition:transform .45s cubic-bezier(.3,1,.4,1)}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.idrop{opacity:1}.iheart,.intro-title,.intro-strap,.intro-skip{opacity:1;transform:none}}
+
+
+.llm-panel{margin:18px 0 4px;padding:14px 16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.055);text-align:left}.llm-title{font-weight:800;margin-bottom:8px}.llm-input{font-size:12px;opacity:.65;margin-bottom:8px}.ai-line{margin:0;font-weight:700;line-height:1.45}
+</style>
+</head>
+<body>
+<div class="intro" id="intro">
+  <div class="intro-in">
+    <svg class="intro-rope" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 4 Q200 18 400 4" stroke="#B08A5C" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="intro-socks">
+      <div class="idrop d1"><span class="ipeg"></span><svg class="mascot" data-side="left" viewBox="0 0 100 105" aria-hidden="true">
+    <path d="M26 12 L58 12 L58 54 Q58 60 64 62 L78 68 Q88 73 88 82 Q88 94 76 94 L44 94 Q26 94 26 76 Z" fill="#7C1E30" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M26 12 L58 12 L58 26 L26 26 Z" fill="#F0CE6A" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M30 32 L54 32 M30 40 L54 40" stroke="#F0CE6A" stroke-width="2" opacity=".4" stroke-linecap="round"/>
+    <g class="eyes">
+      <g class="eye">
+        <circle cx="39" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="39" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="40.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+      <g class="eye">
+        <circle cx="55" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="55" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="56.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+    </g>
+    <ellipse cx="30" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <ellipse cx="64" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <path d="M44 62 Q47.5 67.5 51 62" stroke="#3A2027" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  </svg></div>
+      <div class="iheart">&#10084;</div>
+      <div class="idrop d2"><span class="ipeg"></span><svg class="mascot" data-side="right" viewBox="0 0 100 105" aria-hidden="true">
+    <path d="M74 12 L42 12 L42 54 Q42 60 36 62 L22 68 Q12 73 12 82 Q12 94 24 94 L56 94 Q74 94 74 76 Z" fill="#F0CE6A" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M74 12 L42 12 L42 26 L74 26 Z" fill="#7C1E30" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M46 32 L70 32 M46 40 L70 40" stroke="#7C1E30" stroke-width="2" opacity=".4" stroke-linecap="round"/>
+    <g class="eyes">
+      <g class="eye">
+        <circle cx="45" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="45" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="46.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+      <g class="eye">
+        <circle cx="61" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="61" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="62.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+    </g>
+    <ellipse cx="36" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <ellipse cx="70" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <path d="M50 62 Q53.5 67.5 57 62" stroke="#3A2027" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  </svg></div>
+    </div>
+    <h2 class="intro-title">Porutham <em>Undo?</em></h2>
+    <p class="intro-strap">Sock compatibility verification</p>
+    <p class="intro-skip">tap to skip</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header>
+  <div class="pill">porutham nokkam</div>
+  <h1>Porutham <span>Undo?</span></h1>
+  <p class="strap">Sock compatibility verification</p>
+  <p class="sub">Show us two socks. We check their colour, pattern and texture, then rule on whether they belong together.</p>
+</header>
+
+<div class="stage" id="stage">
+  <svg class="washline" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 5 Q200 22 400 5" stroke="#B08A5C" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <div class="hanger left"><span class="peg"></span>
+  <svg class="mascot" data-side="left" viewBox="0 0 100 105" aria-hidden="true">
+    <path d="M26 12 L58 12 L58 54 Q58 60 64 62 L78 68 Q88 73 88 82 Q88 94 76 94 L44 94 Q26 94 26 76 Z" fill="#7C1E30" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M26 12 L58 12 L58 26 L26 26 Z" fill="#F0CE6A" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M30 32 L54 32 M30 40 L54 40" stroke="#F0CE6A" stroke-width="2" opacity=".4" stroke-linecap="round"/>
+    <g class="eyes">
+      <g class="eye">
+        <circle cx="39" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="39" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="40.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+      <g class="eye">
+        <circle cx="55" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="55" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="56.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+    </g>
+    <ellipse cx="30" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <ellipse cx="64" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <path d="M44 62 Q47.5 67.5 51 62" stroke="#3A2027" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  </svg></div>
+
+  <div class="hearts" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="hanger right"><span class="peg"></span>
+  <svg class="mascot" data-side="right" viewBox="0 0 100 105" aria-hidden="true">
+    <path d="M74 12 L42 12 L42 54 Q42 60 36 62 L22 68 Q12 73 12 82 Q12 94 24 94 L56 94 Q74 94 74 76 Z" fill="#F0CE6A" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M74 12 L42 12 L42 26 L74 26 Z" fill="#7C1E30" stroke="#3A2027" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M46 32 L70 32 M46 40 L70 40" stroke="#7C1E30" stroke-width="2" opacity=".4" stroke-linecap="round"/>
+    <g class="eyes">
+      <g class="eye">
+        <circle cx="45" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="45" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="46.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+      <g class="eye">
+        <circle cx="61" cy="51" r="6.4" fill="#FFFBF2" stroke="#3A2027" stroke-width="2"/>
+        <g class="pupil"><circle cx="61" cy="51" r="3.4" fill="#3A2027"/>
+          <circle cx="62.3" cy="49.5" r="1.2" fill="#FFFBF2"/></g>
+      </g>
+    </g>
+    <ellipse cx="36" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <ellipse cx="70" cy="62" rx="6" ry="3.8" fill="#E4737F" opacity=".55"/>
+    <path d="M50 62 Q53.5 67.5 57 62" stroke="#3A2027" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  </svg></div>
+</div>
+
+<section class="intake">
+  <div class="slot">
+    <h3>First sock <span class="tag waiting" id="stA">waiting</span></h3>
+    <label class="drop" id="dropA" tabindex="0" role="button" aria-label="Add the first sock">
+      <span><b>🧦</b>tap to add a photo</span>
+      <input type="file" id="fileA" accept="image/*">
+    </label>
+    <div class="acts">
+      <button type="button" class="mini cam" data-k="A">📷 Camera</button>
+      <button type="button" class="mini gal" data-k="A">🖼️ Gallery</button>
+    </div>
+    <input type="file" id="camA" accept="image/*" capture="environment">
+  </div>
+  <div class="slot">
+    <h3>Second sock <span class="tag waiting" id="stB">waiting</span></h3>
+    <label class="drop" id="dropB" tabindex="0" role="button" aria-label="Add the second sock">
+      <span><b>🧦</b>tap to add a photo</span>
+      <input type="file" id="fileB" accept="image/*">
+    </label>
+    <div class="acts">
+      <button type="button" class="mini cam" data-k="B">📷 Camera</button>
+      <button type="button" class="mini gal" data-k="B">🖼️ Gallery</button>
+    </div>
+    <input type="file" id="camB" accept="image/*" capture="environment">
+  </div>
+</section>
+
+<div class="controls">
+  <button id="go" disabled>Check the match</button>
+  <button id="clear" class="ghost">Start over</button>
+  <p class="hint">Fill the frame with one sock. A plain background helps us see it.</p>
+</div>
+
+<div class="scan" id="scan" hidden>
+  <div class="scanbox">
+    <div class="radar"><span>🧦</span></div>
+    <p class="scanmsg" id="scanmsg">Da… onnu wait cheyy.</p>
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="scansteps" id="scansteps">
+      <div>👀 First impression check...</div>
+      <div>🎨 Colour chemistry nokkunnu...</div>
+      <div>🧵 Pattern scene nokkunnu...</div>
+      <div>🤖 AI-yodu chodikkunnu...</div>
+      <div>💭 Unnecessary decision making...</div>
+    </div>
+    <div class="machine-reaction"><b>MACHINE STATUS</b><br><span id="machineline">“Da… case serious aanu.”</span></div>
+  </div>
+</div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<article class="card" id="card">
+  <div class="sticker" id="sticker" hidden>
+    <span class="stamp-emoji" id="stickerEmoji"></span>
+    <span class="stamp-text" id="stickerText"></span>
+    <span class="stamp-caption" id="stickerCaption"></span>
+  </div>
+  <div class="score"><span id="score">0</span><sup>%</sup></div>
+  <div class="meter"><i id="meter"></i></div>
+  <p class="verdict" id="verdict"></p>
+  <p class="objection" id="objection"></p>
+    <div class="llm-panel" id="llmPanel" hidden>
+      <div class="llm-title">🤖 AI Sock Verdict</div>
+      <div class="llm-input" id="llmInput"></div>
+      <p class="ai-line" id="ailine"></p>
+    </div>
+  <div class="stats" id="stats"></div>
+  <div class="peek" id="peek"></div>
+</article>
+
+<section class="register">
+  <h2>Everyone we've matched</h2>
+  <p class="hint">This list clears when you reload the page.</p>
+  <div id="regList"><div class="empty">No socks yet. Add two and see what happens.</div></div>
+</section>
+
+<footer>made with 🧦 · no socks were separated in the making of this · build 20</footer>
+</div>
+
+<script>
+/* ==========================================================================
+   ⬇⬇⬇  EDIT YOUR DIALOGUES HERE  ⬇⬇⬇
+   Everything you'd want to change is in this one block. Nothing below matters.
+   Add as many lines as you like to each list — one is picked at random.
+   Keep the numbers (95, 85, 70...) as they are. They're the score cut-offs.
+   ========================================================================== */
+
+const VERDICTS = [
+  [95, [
+    "Apo engana machu… SET AAHLO! 😂",
+    "Da… ithu set aayallo! 😭",
+    "Machu, ivar thammil entho und 👀",
+    "Bro… sambhavam aanallo.",
+    "Da, ivare ini pirikkanda."
+  ]],
+  [85, [
+    "Aahh bro… chemistry okke und.",
+    "Da, ithu work aavumennu thonnunnu.",
+    "Machu… chance und ketto.",
+    "Ithu kollam da, keep them together."
+  ]],
+  [70, [
+    "Hmm… kollam da, nadakkum.",
+    "Machu, oru chance kodukkam.",
+    "Da… kurach adjustment okke venam.",
+    "Aahh, vibe und… full alla."
+  ]],
+  [50, [
+    "Machu… enikkoru doubt und 😂",
+    "Da… entho oru scene und.",
+    "Bro, njanum confused aanu.",
+    "Ithine kurich ippo onnum parayanda.",
+    "Da… ivare kurach time kodukkam."
+  ]],
+  [30, [
+    "Machu… vere pair nokkam.",
+    "Da… ithu venda, vid.",
+    "Bro, try cheythu. Athra thanne.",
+    "Ithu work aavilla da 😭",
+    "Machu, nammal ithu vidam."
+  ]],
+  [0, [
+    "Da… ivare enthinaa onnich konduvannath 😭",
+    "Machu please… ithu venda.",
+    "Bro… ee pair cancel cheyyam.",
+    "Da… pani paali. 💀",
+    "Machu, vere sock edukk."
+  ]]
+];
+
+// shown under the score, explaining what's wrong
+const OBJECTIONS = {
+  pattern: ["Pattern okke kurach complicated aanu 😂", "Pattern nearly set aanu."],
+  colour:  ["Colour chemistry kurach weak aanu.", "Shade oru vazhi poyi 😂"],
+  weave:   ["Texture same wavelength alla.", "One sock kurach tired aanu."],
+  perfect: "Da… same photo alle? 😂",
+  nothing: "Nokki… problem onnum kandilla machu."
+};
+
+// the loading messages during the scan
+const SCAN_MSGS = [
+  "Da… onnu wait cheyy.",
+  "Colour chemistry nokkunnu…",
+  "Pattern okke check cheyyatte…",
+  "AI-yodu chodikkunnu…",
+  "Machu… decision edukkan kurach kashtam aanu.",
+  "Okay… result vannu. 👀"
+];
+
+// cinema-stamp stickers shown on the result card — original art & captions,
+// written in a filmy Mollywood-poster spirit (NOT quoted from any real film)
+const STICKERS = [
+  [90, ["🎬","MASS ENTRY",   "Ee jodi kidilan aayipoyi!"]],
+  [75, ["🔥","SUPERHIT",     "Kollam da, set aanu!"]],
+  [55, ["🍿","SECOND SHOW",  "Okay aanu... theatre il kaanam."]],
+  [35, ["😅","SEMI FLOP",    "Ithu oru... doubtful scene da."]],
+  [0,  ["💀","FLOP SHOW",    "Adi paavam... next try machu."]]
+];
+
+/* ==========================================================================
+   ⬆⬆⬆  END OF EDITABLE BIT  ⬆⬆⬆
+   ========================================================================== */
+
+const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+
+/* ---------------- image analysis (unchanged, it works) ---------------- */
+const SIZE = 160;
+
+const toBin = (r,g,b) => (r>>6)*16 + (g>>6)*4 + (b>>6);
+
+// legs are always in the photo. cut them out — but never mistake a grey or white sock for skin.
+function isSkin(r,g,b){
+  const mx = Math.max(r,g,b), mn = Math.min(r,g,b);
+  if(mx - mn <= 18) return false;          // neutral: it's a sock, not a leg
+  if(r < b + 12 || r < g) return false;    // skin is reddish
+  const y  = 0.299*r + 0.587*g + 0.114*b;
+  const cb = 128 - 0.168736*r - 0.331264*g + 0.5*b;
+  const cr = 128 + 0.5*r - 0.418688*g - 0.081312*b;
+  return y > 50 && cb >= 76 && cb <= 133 && cr >= 130 && cr <= 180;
+}
+
+// a little blur across the colour bins, so a lighting shift doesn't tank the match
+function smoothHist(h){
+  const out = new Float64Array(64);
+  for(let r=0;r<4;r++) for(let g=0;g<4;g++) for(let b=0;b<4;b++){
+    const k = r*16+g*4+b;
+    let sum = h[k]*2, w = 2;
+    for(const [dr,dg,db] of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){
+      const nr=r+dr, ng=g+dg, nb=b+db;
+      if(nr<0||nr>3||ng<0||ng>3||nb<0||nb>3) continue;
+      sum += h[nr*16+ng*4+nb]; w += 1;
+    }
+    out[k] = sum/w;
+  }
+  let t=0; for(let k=0;k<64;k++) t+=out[k];
+  if(t>0) for(let k=0;k<64;k++) out[k]/=t;
+  return out;
+}
+
+function analyse(img, srcFallback){
+  const c = document.createElement('canvas');
+  c.width = c.height = SIZE;
+  const ctx = c.getContext('2d', {willReadFrequently:true});
+  const side = Math.min(img.naturalWidth, img.naturalHeight);
+  const sx = (img.naturalWidth  - side) / 2;
+  const sy = (img.naturalHeight - side) / 2;
+  ctx.drawImage(img, sx, sy, side, side, 0, 0, SIZE, SIZE);
+
+  const d = ctx.getImageData(0,0,SIZE,SIZE).data;
+  const N = SIZE*SIZE;
+
+  /* 1 — learn the background from the border ring, but never eat the subject */
+  const ring = new Float64Array(64), cen = new Float64Array(64);
+  const edge = Math.round(SIZE*0.10);
+  let ringN = 0, cenN = 0;
+  for(let y=0;y<SIZE;y++) for(let x=0;x<SIZE;x++){
+    const i=(y*SIZE+x)*4, k=toBin(d[i],d[i+1],d[i+2]);
+    if(x>=edge && x<SIZE-edge && y>=edge && y<SIZE-edge){ cen[k]++; cenN++; }
+    else { ring[k]++; ringN++; }
+  }
+  const bgBin = new Uint8Array(64);
+  for(let k=0;k<64;k++){
+    const rf = ring[k]/ringN, cf = cen[k]/(cenN||1);
+    // a colour that dominates the middle is the sock, even if it touches the edge
+    if(rf > 0.045 && rf > cf*1.15) bgBin[k] = 1;
+  }
+
+  /* 2 — cache the colour bin and skin test for every pixel */
+  const binAt = new Uint8Array(N), skinAt = new Uint8Array(N);
+  for(let p=0;p<N;p++){
+    const i=p*4, r=d[i], g=d[i+1], b=d[i+2];
+    binAt[p]  = toBin(r,g,b);
+    skinAt[p] = isSkin(r,g,b) ? 1 : 0;
+  }
+
+  /* 3 — collect candidate regions from BOTH sides of the background guess.
+         A dark sock that runs off the edge of the frame gets mistaken for
+         background, so we also consider the pixels we thought WERE background. */
+  const inFg = new Uint8Array(N), inBg = new Uint8Array(N);
+  for(let p=0;p<N;p++){
+    if(skinAt[p]) continue;
+    if(bgBin[binAt[p]]) inBg[p] = 1; else inFg[p] = 1;
+  }
+
+  const cands = [];
+  for(const src of [inFg, inBg]){
+    const seen = new Uint8Array(N), stack = [];
+    for(let p0=0;p0<N;p0++){
+      if(!src[p0] || seen[p0]) continue;
+      const blob=[]; stack.length=0; stack.push(p0); seen[p0]=1;
+      while(stack.length){
+        const q = stack.pop(); blob.push(q);
+        const x = q % SIZE, y = (q / SIZE) | 0;
+        if(x>0      && src[q-1]    && !seen[q-1])   { seen[q-1]=1;    stack.push(q-1); }
+        if(x<SIZE-1 && src[q+1]    && !seen[q+1])   { seen[q+1]=1;    stack.push(q+1); }
+        if(y>0      && src[q-SIZE] && !seen[q-SIZE]){ seen[q-SIZE]=1; stack.push(q-SIZE); }
+        if(y<SIZE-1 && src[q+SIZE] && !seen[q+SIZE]){ seen[q+SIZE]=1; stack.push(q+SIZE); }
+      }
+      if(blob.length >= N*0.04) cands.push(blob);
+    }
+  }
+
+  /* 4 — a sock is a sensible size, sits near the middle, and does NOT hug the
+         whole frame edge. Background hugs the edge; a sock doesn't. */
+  const mid = (SIZE-1)/2;
+  let best = [], bestQ = -1;
+  for(const blob of cands){
+    const n = blob.length, cov = n/N;
+    if(cov < 0.07 || cov > 0.80) continue;
+    let cx=0, cy=0, touch=0;
+    for(const q of blob){
+      const x = q % SIZE, y = (q / SIZE) | 0;
+      cx+=x; cy+=y;
+      if(x===0 || y===0 || x===SIZE-1 || y===SIZE-1) touch++;
+    }
+    const touchFrac = touch / (4*SIZE - 4);
+    const off  = Math.hypot(cx/n - mid, cy/n - mid) / mid;
+    const size = (cov >= 0.18 && cov <= 0.62) ? 1.0 : 0.7;
+    const q = size * (1 - touchFrac) * (1 - 0.4*Math.min(1, off));
+    if(q > bestQ){ bestQ = q; best = blob; }
+  }
+
+  let mask = new Uint8Array(N);
+  if(bestQ > 0 && best.length){ for(const p of best) mask[p]=1; }
+  else { for(let p=0;p<N;p++) mask[p] = skinAt[p] ? 0 : 1; }
+  let count = 0; for(let p=0;p<N;p++) count += mask[p];
+  if(count < N*0.02){ mask.fill(1); count = N; }
+
+  /* 4 — measure the sock pixels only */
+  const hist = new Float64Array(64);
+  const lum  = new Float64Array(N);
+  let rs=0, gs=0, bs=0;
+  for(let p=0;p<N;p++){
+    const i=p*4, r=d[i], g=d[i+1], b=d[i+2];
+    lum[p] = 0.2126*r + 0.7152*g + 0.0722*b;
+    if(!mask[p]) continue;
+    rs+=r; gs+=g; bs+=b;
+    hist[binAt[p]]++;
+  }
+  for(let k=0;k<64;k++) hist[k] /= count;
+
+  let grad=0, gc=0;
+  for(let y=0;y<SIZE;y++) for(let x=0;x<SIZE-1;x++){
+    const p=y*SIZE+x; if(!mask[p]||!mask[p+1]) continue;
+    grad += Math.abs(lum[p]-lum[p+1]); gc++;
+  }
+  for(let y=0;y<SIZE-1;y++) for(let x=0;x<SIZE;x++){
+    const p=y*SIZE+x; if(!mask[p]||!mask[p+SIZE]) continue;
+    grad += Math.abs(lum[p]-lum[p+SIZE]); gc++;
+  }
+
+  /* 5 — overall scene light, used to spot photos taken in different conditions */
+  let sr=0, sg=0, sb=0;
+  for(let p=0;p<N;p++){ const i=p*4; sr+=d[i]; sg+=d[i+1]; sb+=d[i+2]; }
+  const scene = [sr/N, sg/N, sb/N];
+
+  /* 6 — a picture of what we actually looked at */
+  let thumb, maskThumb;
+  try { thumb = c.toDataURL('image/jpeg', 0.7); } catch(e) { thumb = srcFallback; }
+  try {
+    const m = ctx.getImageData(0,0,SIZE,SIZE);
+    for(let p=0;p<N;p++){
+      if(mask[p]) continue;
+      const i=p*4;
+      m.data[i]=255; m.data[i+1]=247; m.data[i+2]=242;
+    }
+    ctx.putImageData(m,0,0);
+    maskThumb = c.toDataURL('image/jpeg', 0.7);
+  } catch(e) { maskThumb = thumb; }
+
+  return {
+    hist: smoothHist(hist),
+    mean: [rs/count, gs/count, bs/count],
+    texture: gc ? grad/gc : 0,
+    coverage: count/N,
+    scene,
+    thumb, maskThumb
+  };
+}
+
+function compare(a,b){
+  let inter=0;
+  for(let k=0;k<64;k++) inter += Math.min(a.hist[k], b.hist[k]);
+
+  // hue and brightness judged separately: the same sock in different light is still the same sock
+  // Hue vs brightness. For NEUTRAL colours (white, grey, black) the hue is
+  // identical, so brightness is the only colour information there is — weight it
+  // heavily. For saturated colours, hue carries the meaning instead.
+  const chrom = m => { const t = m[0]+m[1]+m[2] + 1e-6; return [m[0]/t, m[1]/t]; };
+  const chroma = m => Math.max(m[0],m[1],m[2]) - Math.min(m[0],m[1],m[2]);
+  const neutral = 1 - Math.min(1, Math.max(chroma(a.mean), chroma(b.mean)) / 30);
+  const wLum = 0.28 + 0.62*neutral, wHue = 1 - wLum;
+
+  const ca = chrom(a.mean), cbx = chrom(b.mean);
+  const dch = Math.hypot(ca[0]-cbx[0], ca[1]-cbx[1]);
+  const dlu = Math.abs((a.mean[0]+a.mean[1]+a.mean[2])/3 - (b.mean[0]+b.mean[1]+b.mean[2])/3);
+  const colour = wHue*Math.max(0, 1 - dch/0.16) + wLum*Math.max(0, 1 - dlu/95);
+
+  // texture barely distinguishes anything (93-98% for every pair we tested), so it counts least
+  // Texture is measured but NOT scored. At this resolution the gradient is
+  // dominated by JPEG noise, not knit structure: it rated two DIFFERENT socks
+  // 99% alike and the SAME pair only 90%. Kept for display, weight zero.
+  const weave = Math.max(0, 1 - Math.abs(a.texture-b.texture)/20);
+  const raw = 0.60*inter + 0.40*colour;
+
+  // S-curve: push convincing pairs up and unconvincing ones down, instead of everything to the middle
+  const ss = raw < 0.5 ? 2*raw*raw : 1 - 2*(1-raw)*(1-raw);
+  const curved = 0.5*raw + 0.5*ss;
+
+  return { score: Math.min(100, Math.max(2, 2 + curved*98)), pattern:inter, colour, weave };
+}
+
+/* ---------------- what it says ---------------- */
+function verdictFor(s){
+  for(const [floor, lines] of VERDICTS) if(s >= floor) return pick(lines);
+  return pick(VERDICTS[VERDICTS.length-1][1]);
+}
+
+function objectionFor(r){
+  const ranked = [
+    ['pattern', r.pattern, OBJECTIONS.pattern],
+    ['colour',  r.colour,  OBJECTIONS.colour],
+    ['weave',   r.weave,   OBJECTIONS.weave]
+  ].sort((x,y)=>x[1]-y[1]);
+
+  const [, val, lines] = ranked[0];          // the weakest link
+  if(val >= 0.97) return OBJECTIONS.perfect;
+  if(val >= 0.88) return OBJECTIONS.nothing;
+  if(val >= 0.72) return lines[1];           // mild version
+  return lines[0];                           // full complaint
+}
+
+function stickerFor(s){
+  for(const [floor, data] of STICKERS) if(s >= floor) return data;
+  return STICKERS[STICKERS.length-1][1];
+}
+
+/* ---------------- wiring ---------------- */
+const state = {A:null, B:null};
+const register = [];
+
+function status(key, text, ok){
+  const tag = document.getElementById('st'+key);
+  tag.textContent = text;
+  tag.classList.toggle('waiting', !ok);
+}
+
+/* one shared path for gallery picks, camera-roll captures and live snaps */
+function ingest(key, src){
+  const drop = document.getElementById('drop'+key);
+  const file = document.getElementById('file'+key);
+  const img = new Image();
+  img.onerror = ()=> status(key, 'not a picture we can open', false);
+  img.onload = ()=>{
+    drop.innerHTML = '';                       // show it first, whatever happens next
+    const shown = new Image();
+    shown.src = src; shown.alt = 'Sock ' + key;
+    drop.appendChild(shown); drop.appendChild(file);
+    try{
+      state[key] = analyse(img, src);
+      status(key, 'got it', true);
+      document.getElementById('go').disabled = !(state.A && state.B);
+    }catch(err){
+      console.error(err);
+      state[key] = null;
+      document.getElementById('go').disabled = true;
+      status(key, 'pixels blocked', false);
+      alert("Your browser won't let the page read this image's pixels.\n\nThis happens when the file is opened straight from disk. Open a terminal in this folder and run:\n\n    python3 -m http.server\n\nThen visit  http://localhost:8000/sock-match.html");
+    }
+  };
+  img.src = src;
+}
+
+function readFile(key, f){
+  if(!f) return;
+  const name = (f.name || '').toLowerCase();
+  if(/\.(heic|heif)$/.test(name) || /heic|heif/.test(f.type || '')){
+    status(key, 'HEIC not supported', false);
+    alert("That photo is a HEIC file, which browsers can't open.\n\nOn iPhone: Settings \u2192 Camera \u2192 Formats \u2192 Most Compatible, then take it again.\n\nOr use the Camera button here instead \u2014 that always works.");
+    return;
+  }
+  status(key, 'reading\u2026', false);
+  const reader = new FileReader();
+  reader.onerror = ()=> status(key, "couldn't read that file", false);
+  reader.onload = ()=> ingest(key, reader.result);
+  reader.readAsDataURL(f);
+}
+
+['A','B'].forEach(key=>{
+  document.getElementById('file'+key)
+    .addEventListener('change', e=> readFile(key, e.target.files && e.target.files[0]));
+  document.getElementById('cam'+key)
+    .addEventListener('change', e=> readFile(key, e.target.files && e.target.files[0]));
+  document.getElementById('drop'+key).addEventListener('keydown', e=>{
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); document.getElementById('file'+key).click(); }
+  });
+});
+
+document.querySelectorAll('.mini.gal').forEach(b=>{
+  b.addEventListener('click', ()=> document.getElementById('file'+b.dataset.k).click());
+});
+
+/* ---------------- camera vs gallery ---------------- */
+// phones get a real camera button; laptops just get one "choose a photo" button
+const hasTouchCamera =
+  /Android|iPhone|iPad|iPod|Mobile|Tablet|Silk/i.test(navigator.userAgent) ||
+  (navigator.maxTouchPoints > 1 && matchMedia('(pointer:coarse)').matches);
+
+if(!hasTouchCamera){
+  document.body.classList.add('no-camera');
+  document.querySelectorAll('.mini.gal').forEach(b=> b.textContent = '🖼️ Choose a photo');
+}
+
+document.querySelectorAll('.mini.cam').forEach(b=>{
+  b.addEventListener('click', ()=> document.getElementById('cam'+b.dataset.k).click());
+});
+
+function confetti(n){
+  const box = document.getElementById('confetti');
+  const bits = ['💕','🧦','✨','💖','🎉'];
+  for(let i=0;i<n;i++){
+    const b = document.createElement('b');
+    b.textContent = bits[Math.floor(Math.random()*bits.length)];
+    b.style.left = Math.random()*100 + 'vw';
+    b.style.animationDuration = (2 + Math.random()*1.6) + 's';
+    b.style.animationDelay = (Math.random()*0.5) + 's';
+    box.appendChild(b);
+    setTimeout(()=> b.remove(), 4200);
+  }
+}
+
+// Sound engine: unlock once from the user's button tap, then reuse the same context.
+let sockAudio = null;
+function unlockSockAudio(){
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return null;
+    if(!sockAudio) sockAudio = new AC();
+    if(sockAudio.state === 'suspended') sockAudio.resume();
+    return sockAudio;
+  }catch(e){ return null; }
+}
+function sockTone(freq=520, dur=.16, gain=.07, type='sine', when=0){
+  const ac = unlockSockAudio();
+  if(!ac) return;
+  try{
+    const now = ac.currentTime + when;
+    const o=ac.createOscillator(), g=ac.createGain();
+    o.type=type; o.frequency.setValueAtTime(freq, now);
+    g.gain.setValueAtTime(.0001, now);
+    g.gain.exponentialRampToValueAtTime(gain, now+.015);
+    g.gain.exponentialRampToValueAtTime(.0001, now+dur);
+    o.connect(g); g.connect(ac.destination); o.start(now); o.stop(now+dur+.03);
+  }catch(e){}
+}
+function finalSockSound(score){
+  const ac = unlockSockAudio();
+  if(!ac) return;
+  try{
+    const notes = score >= 85 ? [523,659,784,1046] : score >= 60 ? [440,554,659] : [330,262,220];
+    notes.forEach((freq,j)=>sockTone(freq,.28,.085,'sine',j*.12));
+  }catch(e){}
+}
+
+document.getElementById('go').addEventListener('click', ()=>{
+  const scan = document.getElementById('scan');
+  const msg  = document.getElementById('scanmsg');
+  const steps = [...document.querySelectorAll('#scansteps div')];
+  const machine = document.getElementById('machineline');
+  const btn  = document.getElementById('go');
+
+  // Calculate FIRST, so every scanning line is based on the actual socks.
+  const scanResult = compare(state.A, state.B);
+  window.__pendingScanResult = scanResult;
+  const p = Math.round(scanResult.pattern*100);
+  const c = Math.round(scanResult.colour*100);
+  const t = Math.round(scanResult.weave*100);
+  const chem = Math.round(Math.max(0, Math.min(1, 0.62*scanResult.pattern + 0.28*scanResult.colour + 0.10*scanResult.weave))*100);
+
+  const featureLine = (name, value, good, okay, bad) =>
+    value >= 85 ? good : value >= 60 ? okay : bad;
+
+  const msgs = [
+    'Da… onnu wait cheyy.',
+    featureLine('Colour', c,
+      '🎨 Colour check… same vibe thanne da.',
+      '🎨 Colour check… hmm, close aanu machu.',
+      '🎨 Colour check… randu team pole und da 😭'),
+    featureLine('Pattern', p,
+      '🧵 Pattern check… da, ithu proper set aanu.',
+      '🧵 Pattern check… almost same lane aanu.',
+      '🧵 Pattern check… ivide aanu kurach scene 😭'),
+    featureLine('Surface', t,
+      '🧶 Texture check… same wavelength aanu.',
+      '🧶 Texture check… okay-ish aanu bro.',
+      '🧶 Texture check… texture polum agree cheyyunnilla 💀'),
+    chem >= 85 ? '🤖 AI check… machu, ivar thammil entho und 👀' :
+      chem >= 60 ? '🤖 AI check… hmm, chance und da.' :
+      '🤖 AI check… enikkum oru doubt und machu 💀',
+    'Okay… result vannu. 👀'
+  ];
+
+  const machineMsgs = [
+    '“Da… case serious aanu.”',
+    c >= 85 ? '“Colour side clean aanu.”' : c >= 60 ? '“Colour okay-ish aanu.”' : '“Da… colouril thanne scene und.”',
+    p >= 85 ? '“Pattern kandittu njan happy aanu.”' : p >= 60 ? '“Pattern kurach nokkam.”' : '“Machu… pattern aanu pani.”',
+    t >= 85 ? '“Texture polum support cheyyunnu.”' : t >= 60 ? '“Texture okay da.”' : '“Texture side weak aanu.”',
+    chem >= 85 ? '“AI-kku ithu ishtappettu.” ❤️' : chem >= 60 ? '“AI-yum full sure alla.” 👀' : '“AI paranju… vere pair nokkam.” 💀',
+    chem >= 85 ? '“Aahh… ivarude case clear aanu.” ❤️' : chem >= 60 ? '“Da… final decision edukkam.”' : '“Machu… njan hands up.” 💀'
+  ];
+
+  btn.disabled = true;
+  scan.hidden = false;
+  steps.forEach(x=>x.classList.remove('active','done'));
+  let i = 0;
+  msg.textContent = msgs[0];
+  machine.textContent = machineMsgs[0];
+  const activate = (n)=>{
+    steps.forEach((x,j)=>x.classList.toggle('active',j===Math.min(n,steps.length-1)));
+    steps.forEach((x,j)=>{ if(j<n) x.classList.add('done'); });
+  };
+  activate(0);
+
+  // Unlock audio directly from the Check button tap.
+  unlockSockAudio();
+  sockTone(430,.14,.07,'sine');
+
+  const totalSteps = msgs.length - 1;
+  const interval = 1050;
+  const tick = setInterval(()=>{
+    i++;
+    if(i <= totalSteps){
+      msg.textContent = msgs[i];
+      machine.textContent = machineMsgs[i];
+      activate(Math.min(i,steps.length-1));
+      sockTone(i===totalSteps ? 720 : 520 + i*25, .14, .075, 'sine');
+    }
+  }, interval);
+
+  // Give every real scan line enough time to be read. About 7.4 seconds total.
+  setTimeout(()=>{
+    clearInterval(tick);
+    steps.forEach(x=>x.classList.add('done'));
+    scan.hidden = true;
+    btn.disabled = false;
+    reveal(window.__pendingScanResult);
+  }, interval * totalSteps + 350);
+});
+
+function reveal(r){
+  r = r || compare(state.A, state.B);
+  const s = r.score;
+
+  const line = verdictFor(s);
+  document.getElementById('verdict').textContent   = line;
+  const machine = document.getElementById('machineline');
+  if(machine) machine.textContent = s >= 85 ? '“Machu… ivarude case clear aanu.” ❤️' : s >= 60 ? '“Da… kurach hope und.” 👀' : s >= 40 ? '“Enikkum ithiloru doubt und.” 😭' : '“Machu… vere pair nokkam.” 💀';
+  document.getElementById('objection').textContent = objectionFor(r);
+  const aiChemistry = Math.max(0, Math.min(1, 0.62*r.pattern + 0.28*r.colour + 0.10*r.weave));
+  document.getElementById('stats').innerHTML = [
+    ['AI Chemistry', aiChemistry], ['Pattern', r.pattern], ['Colour', r.colour], ['Surface', r.weave]
+  ].map(([label,v])=>`<div class="stat"><b>${Math.round(v*100)}%</b><small>${label}</small></div>`).join('');
+
+  const cov = Math.min(state.A.coverage, state.B.coverage);
+
+  // did these two photos come from the same lighting? if not, the score is unreliable.
+  const lum = s => (s[0]+s[1]+s[2])/3;
+  const chr = s => { const t = s[0]+s[1]+s[2] + 1e-6; return [s[0]/t, s[1]/t]; };
+  const la = lum(state.A.scene), lb = lum(state.B.scene);
+  const brightGap = Math.max(la,lb) / Math.max(1, Math.min(la,lb));
+  const ca2 = chr(state.A.scene), cb2 = chr(state.B.scene);
+  const tintGap = Math.hypot(ca2[0]-cb2[0], ca2[1]-cb2[1]);
+
+  let warn = '';
+  if(brightGap > 1.28 || tintGap > 0.035){
+    warn = '<p class="warn">⚠️ These two photos were taken in different light, so the score is probably lower than it should be. Shoot both socks together, in the same spot.</p>';
+  } else if(cov < 0.07 || Math.max(state.A.coverage, state.B.coverage) > 0.92){
+    warn = '<p class="warn">We had trouble finding the sock in one of these. Try a plainer background, or fill more of the frame.</p>';
+  }
+  document.getElementById('peek').innerHTML =
+    '<p class="cap">what we actually looked at</p>' +
+    '<div class="pair"><img src="'+state.A.maskThumb+'" alt="Sock A, background removed">' +
+    '<img src="'+state.B.maskThumb+'" alt="Sock B, background removed"></div>' + warn;
+
+  const card = document.getElementById('card');
+  card.classList.remove('on'); void card.offsetWidth; card.classList.add('on');
+
+  const stage = document.getElementById('stage');
+  stage.classList.remove('happy','sad');
+  setTimeout(()=>{
+    if(s >= 68) stage.classList.add('happy');
+    else if(s < 45) stage.classList.add('sad');
+    if(window.sockGlance) window.sockGlance(s >= 68);
+    SockAI(s, r.colour, r.pattern, r.weave);
+  }, 340);
+
+  // cinema-stamp sticker — pops in a beat after the card itself appears
+  const [semoji, stext, scap] = stickerFor(s);
+  const sticker = document.getElementById('sticker');
+  document.getElementById('stickerEmoji').textContent = semoji;
+  document.getElementById('stickerText').textContent = stext;
+  document.getElementById('stickerCaption').textContent = scap;
+  sticker.hidden = false;
+  sticker.classList.remove('show');
+  void sticker.offsetWidth;
+  setTimeout(()=> sticker.classList.add('show'), 550);
+
+  setTimeout(()=>{ document.getElementById('meter').style.width = s + '%'; }, 60);
+
+  const el = document.getElementById('score');
+  const t0 = performance.now(), dur = 850;
+  (function tick(now){
+    const t = Math.min(1,(now-t0)/dur);
+    el.textContent = (s * (1-Math.pow(1-t,3))).toFixed(1);
+    if(t<1) requestAnimationFrame(tick);
+  })(t0);
+
+  register.push({score:s, verdict:line, a:state.A.thumb, b:state.B.thumb});
+  drawRegister();
+  card.scrollIntoView({behavior:'smooth', block:'center'});
+
+  // Final verdict sound uses the already-unlocked audio context.
+  setTimeout(()=> finalSockSound(s), 120);
+
+  if(s >= 85) setTimeout(()=> confetti(28), 700);
+}
+
+function drawRegister(){
+  const box = document.getElementById('regList');
+  if(!register.length){ box.innerHTML = '<div class="empty">No socks yet. Add two and see what happens.</div>'; return; }
+  box.innerHTML = [...register].sort((x,y)=>y.score-x.score).map((e,i)=>`
+    <div class="row">
+      <span class="rank">${i+1}</span>
+      <span class="thumbs"><img src="${e.a}" alt=""><img src="${e.b}" alt=""></span>
+      <span class="rscore">${e.score.toFixed(1)}%</span>
+      <span class="rverdict">${e.verdict}</span>
+    </div>`).join('');
+}
+
+document.getElementById('clear').addEventListener('click', ()=>{
+  state.A = state.B = null;
+  ['A','B'].forEach(k=>{
+    const drop = document.getElementById('drop'+k), file = document.getElementById('file'+k);
+    file.value = '';
+    document.getElementById('cam'+k).value = '';
+    drop.innerHTML = '<span><b>🧦</b>tap to add a photo</span>';
+    drop.appendChild(file);
+    const tag = document.getElementById('st'+k);
+    tag.textContent = 'waiting'; tag.classList.add('waiting');
+  });
+  document.getElementById('go').disabled = true;
+  document.getElementById('card').classList.remove('on');
+  document.getElementById('stage').classList.remove('happy','sad');
+  document.getElementById('meter').style.width = '0';
+  const sticker = document.getElementById('sticker');
+  sticker.hidden = true;
+  sticker.classList.remove('show');
+});
+
+/* ---------------- intro splash ---------------- */
+(function(){
+  const intro = document.getElementById('intro');
+  if(!intro) return;
+  let done = false;
+  const close = ()=>{
+    if(done) return; done = true;
+    intro.classList.add('gone');
+    setTimeout(()=>{ intro.style.display='none'; }, 600);
+  };
+  intro.addEventListener('click', close);
+  document.addEventListener('keydown', close, {once:true});
+  setTimeout(close, 3200);
+})();
+
+/* ---------------- living eyes ---------------- */
+(function(){
+  const socks = Array.from(document.querySelectorAll('.mascot'));
+  if(!socks.length) return;
+
+  const fine = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+  const MAX = 2.2;                       // how far a pupil may travel, in SVG units
+
+  function look(sock, dx, dy){
+    const len = Math.hypot(dx,dy) || 1;
+    const s = Math.min(1, len/90) * MAX;
+    const x = (dx/len)*s, y = (dy/len)*s;
+    sock.querySelectorAll('.pupil').forEach(p=>{
+      p.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px)`;
+    });
+  }
+
+  // desktop: eyes follow the cursor
+  if(fine){
+    window.addEventListener('mousemove', e=>{
+      socks.forEach(s=>{
+        const r = s.getBoundingClientRect();
+        if(!r.width) return;
+        look(s, e.clientX-(r.left+r.width/2), e.clientY-(r.top+r.height*0.45));
+      });
+    }, {passive:true});
+  }
+
+  // everywhere: drift about on their own when nothing else is going on
+  socks.forEach(sock=>{
+    (function drift(){
+      const wait = 900 + Math.random()*2200;
+      setTimeout(()=>{
+        if(!fine || sock.closest('.intro')){
+          look(sock, (Math.random()*2-1)*90, (Math.random()*2-1)*70);
+        }
+        drift();
+      }, wait);
+    })();
+
+    // blink on each sock's own schedule, so they never blink together
+    (function blink(){
+      setTimeout(()=>{
+        sock.classList.add('blinking');
+        setTimeout(()=> sock.classList.remove('blinking'), 130);
+        blink();
+      }, 2200 + Math.random()*4000);
+    })();
+  });
+
+  // after a verdict: glance at each other, or look away
+  window.sockGlance = (happy)=>{
+    const pair = socks.filter(s=> !s.closest('.intro'));
+    pair.forEach(s=>{
+      const side = s.dataset.side === 'left' ? 1 : -1;
+      look(s, happy ? side*90 : -side*90, happy ? 10 : -30);
+    });
+  };
+})();
+
+
+/* ---------------- on-device LLM (Chrome only, optional) ----------------
+   Writes ONE short Manglish line about the actual numbers. If the model
+   isn't there, nothing happens and the written verdicts carry on as normal. */
+const SockAI = (function(){
+  let session = null, tried = false;
+
+  function api(){
+    if(typeof LanguageModel !== 'undefined') return LanguageModel;              // Chrome 138+
+    if(typeof self !== 'undefined' && self.ai && self.ai.languageModel) return self.ai.languageModel;
+    return null;
+  }
+
+  async function ready(){
+    if(session) return session;
+    if(tried) return null;
+    tried = true;
+    const A = api();
+    if(!A) return null;
+    try{
+      const ok = A.availability ? await A.availability() : 'available';
+      if(ok === 'unavailable') return null;
+      session = await A.create({
+        initialPrompts:[{ role:'system', content:
+          "You write ONE very short line in Manglish - Malayalam typed in English letters, " +
+          "the way a Malayali friend texts. Maximum 8 words. No quotes, no English translation, " +
+          "no explanation, no emoji. Use words like machu, da, aliya, set, vibe, und, illa. " +
+          "Examples: 'Colour set aanu, pattern maathram vera.' / " +
+          "'Machu, colour matram matching und.' / 'Pattern othu varunnilla da.'" }]
+      });
+      return session;
+    }catch(e){ console.log('on-device AI not available:', e && e.message); return null; }
+  }
+
+  function tidy(text){
+    if(!text) return '';
+    let t = String(text).split('\n')[0].trim();
+    t = t.replace(/^["'`*\s]+|["'`*\s]+$/g,'');
+    const words = t.split(/\s+/);
+    if(words.length > 12) return '';                             // rambling - drop it
+    if(t.length > 80 || t.length < 6) return '';
+    if(/[\u0D00-\u0D7F]/.test(t)) return '';                    // Malayalam script - we want Manglish
+    // must actually SOUND Manglish, or it's just English and we don't want it
+    const manglish = /\b(aanu|aan|und|undo|illa|alla|machu|macha|da|aliya|chetta|bro|matram|maathram|vera|vere|set|okke|ketto|alle|nalla|kollam|poli|venda|vid|ithu|ivar|randum|onnu|kurach|adjust|vibe|chance|thonnunnu|parayanda|edukk|nokk)\b/i;
+    if(!manglish.test(t)) return '';
+    return t;
+  }
+
+  return async function say(score, colour, pattern, weave){
+    const box = document.getElementById('ailine');
+    const panel = document.getElementById('llmPanel');
+    const input = document.getElementById('llmInput');
+    if(!box || !panel) return;
+    panel.hidden = true;
+    const s = await ready();
+    if(!s) return;
+    try{
+      input.textContent = `AI Input → Colour ${Math.round(colour*100)}% • Pattern ${Math.round(pattern*100)}% • Texture ${Math.round(weave*100)}% • Overall ${score.toFixed(0)}%`;
+      panel.hidden = false;
+      box.textContent = '🤖 AI is analysing your sock chemistry…';
+      const out = await Promise.race([
+        s.prompt(
+          `Two socks were compared. Colour match ${Math.round(colour*100)}%, ` +
+          `pattern match ${Math.round(pattern*100)}%, texture match ${Math.round(weave*100)}%, ` +
+          `overall ${score.toFixed(0)}%. Write one short Manglish line about what matches and what does not.`
+        ),
+        new Promise(r=> setTimeout(()=> r(''), 6000))              // never hang the demo
+      ]);
+      const line = tidy(out);
+      if(line){ box.textContent = line; box.hidden = false; }
+    }catch(e){ console.log('AI line skipped:', e && e.message); }
+  };
+})();
+
+</script>
+</body>
+</html>
