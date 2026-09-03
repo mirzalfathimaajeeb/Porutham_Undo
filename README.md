@@ -82,21 +82,6 @@ python3 -m http.server 8000
 
 **Optional AI line:** Chrome 138+ with the built-in AI model enabled will add a generated Manglish verdict line. Every other browser silently skips it and the written verdicts carry on as normal.
 
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*The intro splash — two kasavu-themed sock mascots dropping onto a washing line with a heart between them. Tap to skip.*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*The intake screen. Two slots, each with camera and gallery options, and the mascots hanging above watching you make your choices.*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Mid-scan. "🧵 Pattern check… ivide aanu kurach scene 😭" — every line here is derived from the real comparison numbers, computed before the animation began.*
-
-![Screenshot4](Add screenshot 4 here with proper name)
-*A result card: animated score counter, cinema stamp, the specific objection, the four stat blocks, and the "what we actually looked at" masked thumbnails proving the segmentation worked.*
 
 # Diagrams
 ```mermaid
