@@ -108,7 +108,7 @@ AI Sock Verdict
 ## Project Demo
 
 ### Video
-[Add your demo video link here]
+(https://drive.google.com/drive/folders/13oPpPBN66rPeqB699mEVxEhDyILwfafS?usp=sharing)
 *Demonstrates uploading two mismatched socks and two matching socks, showing the scoring difference and the sass level scaling accordingly — from a savage roast on a bad pair to full confetti celebration on a great match.*
 
 
