@@ -86,7 +86,6 @@ The application is designed to make the entire experience playful and interactiv
 
 ### How It Works
 
-```text
 Two Sock Images
        ↓
 Camera / Gallery Input
