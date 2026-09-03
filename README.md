@@ -1,11 +1,11 @@
-# Porutham Undo? 🎯
+# Porutham Undo?
 
 ## Basic Details
 
 ### Team Name: Porutham
 
 ### Team Members
-- Team Lead: Mirsal Fathima Ajeeb - Saintgits College of Applied Sciences
+- Member 1: Mirsal Fathima Ajeeb - Saintgits College of Applied Sciences
 - Member 2: Renjana S P - Saintgits College of Applied Sciences
 
 ### Project Description
