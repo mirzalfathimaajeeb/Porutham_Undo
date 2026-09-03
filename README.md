@@ -137,8 +137,7 @@ N/A — no hardware involved in this project.
 
 *Demonstrates uploading two mismatched socks and then two matching socks, showing the scoring difference and the sass level scaling accordingly — from a savage roast on a bad pair to full confetti celebration on a great match.*
 
-# Additional Demos
-[Add any extra demo materials/links]
+
 
 ## Team Contributions
 - **Mirsal Fathima Ajeeb:** Project ideation, UI/UX design, front-end interface development, visual design, AI/LLM integration, user interaction flow, and project presentation.
